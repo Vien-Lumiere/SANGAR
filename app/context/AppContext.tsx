@@ -49,9 +49,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   useEffect(() => {
     const loadConfig = async () => {
       try {
-        const storedApi = await AsyncStorage.getItem(STORAGE_KEYS.API_URL);
-        const storedWs = await AsyncStorage.getItem(STORAGE_KEYS.WS_URL);
-        const storedKey = await AsyncStorage.getItem(STORAGE_KEYS.API_KEY);
+        const storedApi = (await AsyncStorage.getItem(STORAGE_KEYS.API_URL)) || (await AsyncStorage.getItem('@nexsis_api_url'));
+        const storedWs = (await AsyncStorage.getItem(STORAGE_KEYS.WS_URL)) || (await AsyncStorage.getItem('@nexsis_ws_url'));
+        const storedKey = (await AsyncStorage.getItem(STORAGE_KEYS.API_KEY)) || (await AsyncStorage.getItem('@nexsis_api_key'));
         
         if (storedApi) setApiUrl(storedApi);
         if (storedWs) setWsUrl(storedWs);

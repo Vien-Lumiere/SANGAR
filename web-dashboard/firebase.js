@@ -1,4 +1,5 @@
-/* ─── NEXSIS Firebase Web Client — firebase.js ────────────────────────────
+/* ─── SANGAR Firebase Web Client — firebase.js ────────────────────────────
+ * (SANGAR: Spatial Analysis Network for Geohazard Alert and Resilience)
  * Uses the Firebase CDN (ES module build) — no bundler required.
  * Loaded via <script type="module"> in index.html.
  * ────────────────────────────────────────────────────────────────────────── */
@@ -56,14 +57,14 @@ try {
     };
 
     // Dispatch a custom DOM event so app.js can stay decoupled from Firebase.
-    window.dispatchEvent(new CustomEvent('nexsis:earthquake', { detail: event }));
+    window.dispatchEvent(new CustomEvent('sangar:earthquake', { detail: event }));
 
     // Also show a native browser notification if the tab is in the background
     if (document.hidden && Notification.permission === 'granted') {
       new Notification(title ?? '⚠ Getaran Terdeteksi', {
         body: body ?? `Sensor ${event.sensor} — ${event.receivedAt}`,
         icon: '/favicon.png',
-        tag:  'nexsis-alert',
+        tag:  'sangar-alert',
       });
     }
   });

@@ -6,7 +6,7 @@ const { getMessaging } = require('firebase-admin/messaging');
 const path = require('path');
 
 const PORT = process.env.PORT || 5000;
-const FCM_TOPIC = 'nexsis-alerts';
+const FCM_TOPIC = 'sangar-alerts';
 
 // 1. Initialize Firebase Admin SDK
 let messaging = null;
@@ -23,6 +23,7 @@ if (process.env.FIREBASE_KEY) {
   const fs = require('fs');
   const potentialPaths = [
     path.join(__dirname, 'firebase-key.json'),
+    path.join(__dirname, 'sangar-firebase-adminsdk.json'),
     path.join(__dirname, 'nexsis-da1b2-firebase-adminsdk-fbsvc-c9f83bb248.json'),
     path.join(__dirname, 'nexsis-68baa-firebase-adminsdk-fbsvc-d10f373e90.json')
   ];
@@ -82,14 +83,14 @@ const earthquakeHistory = [
   {
     id: 1234567800,
     status: 'earthquake_detected',
-    sensor: 'Nexsis-A1',
+    sensor: 'SANGAR-A1',
     timestamp: new Date(Date.now() - 3600000).toISOString(),
     receivedAt: formatDate(new Date(Date.now() - 3600000)),
   },
   {
     id: 1234567801,
     status: 'earthquake_detected',
-    sensor: 'Nexsis-B2',
+    sensor: 'SANGAR-B2',
     timestamp: new Date(Date.now() - 7200000).toISOString(),
     receivedAt: formatDate(new Date(Date.now() - 7200000)),
   }
@@ -130,7 +131,7 @@ app.post('/earthquake', (req, res) => {
   const newEvent = {
     id: body.id || Date.now(),
     status: body.status || 'earthquake_detected',
-    sensor: body.sensor || 'Nexsis',
+    sensor: body.sensor || 'SANGAR',
     timestamp: body.timestamp || new Date().toISOString(),
     receivedAt: formatDate(new Date()),
   };
@@ -191,7 +192,7 @@ function handleEarthquakeEvent(event) {
         priority: 'high',
         notification: {
           sound: 'default',
-          channelId: 'nexsis-alerts',
+          channelId: 'sangar-alerts',
         }
       }
     };
@@ -211,7 +212,7 @@ function handleEarthquakeEvent(event) {
 // Start Server
 server.listen(PORT, () => {
   console.log(`=================================================`);
-  console.log('NEXSIS Backend Server running on port 5000');
+  console.log('SANGAR Backend Server running on port 5000');
   console.log(`API URL: http://localhost:${PORT}`);
   console.log(`WS URL:  ws://localhost:${PORT}`);
   console.log(`=================================================`);
@@ -228,7 +229,7 @@ if (process.stdin.isTTY) {
       const mockEvent = {
         id: Date.now(),
         status: 'earthquake_detected',
-        sensor: 'Nexsis-SIM',
+        sensor: 'SANGAR-SIM',
         timestamp: new Date().toISOString(),
         receivedAt: formatDate(new Date()),
       };

@@ -1,4 +1,4 @@
-/* ─── NEXSIS Web Dashboard — app.js ───────────────────────────────────── */
+/* ─── SANGAR Web Dashboard — app.js (Spatial Analysis Network for Geohazard Alert and Resilience) ── */
 'use strict';
 
 // ─── CONFIGURATION ──────────────────────────────────────────────────────────
@@ -6,7 +6,7 @@ let defaultWsUrl = 'ws://localhost:5000';
 if (window.location.protocol && window.location.protocol.startsWith('http')) {
   defaultWsUrl = `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}`;
 }
-let WS_URL = localStorage.getItem('nexsis_ws_url') || defaultWsUrl;
+let WS_URL = localStorage.getItem('sangar_ws_url') || localStorage.getItem('nexsis_ws_url') || defaultWsUrl;
 const API_BASE = () => WS_URL.replace('ws://', 'http://').replace('wss://', 'https://');
 
 // ─── STATE ───────────────────────────────────────────────────────────────────
@@ -336,7 +336,7 @@ async function simulateEarthquake() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        sensor: 'Nexsis-SIM',
+        sensor: 'SANGAR-SIM',
         status: 'earthquake_detected',
         password: password
       })
@@ -347,7 +347,7 @@ async function simulateEarthquake() {
     const mock = {
       id: Date.now(),
       status: 'earthquake_detected',
-      sensor: 'Nexsis-SIM',
+      sensor: 'SANGAR-SIM',
       timestamp: new Date().toISOString(),
       receivedAt: formatDate(new Date())
     };
@@ -400,7 +400,7 @@ document.getElementById('modal-overlay').addEventListener('click', (e) => {
 });
 document.getElementById('modal-save').addEventListener('click', () => {
   WS_URL = document.getElementById('ws-url-input').value.trim() || WS_URL;
-  localStorage.setItem('nexsis_ws_url', WS_URL);
+  localStorage.setItem('sangar_ws_url', WS_URL);
   closeModal();
   connect();
 });
@@ -459,7 +459,7 @@ window.addEventListener('click', unlockAudio, { once: true });
 
 // ─── FCM PUSH BRIDGE ──────────────────────────────────────────────────────────
 // firebase.js dispatches this custom event when a foreground FCM push arrives.
-window.addEventListener('nexsis:earthquake', (e) => {
+window.addEventListener('sangar:earthquake', (e) => {
   const event = e.detail;
   addEventToTable(event);
   triggerAlarm(event);

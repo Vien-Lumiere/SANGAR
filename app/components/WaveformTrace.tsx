@@ -99,7 +99,7 @@ export const WaveformTrace: React.FC = () => {
       <View style={styles.legendContainer}>
         <Text style={styles.legendText}>RANGE: ±1.5G</Text>
         <Text style={styles.legendText}>FREQ: 100HZ</Text>
-        <Text style={styles.legendText}>Nexsis ANALOG CH-1</Text>
+        <Text style={styles.legendText}>SANGAR ANALOG CH-1</Text>
       </View>
     </View>
   );

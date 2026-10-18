@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "nexsis",
-    "slug": "nexsis",
+    "name": "SANGAR",
+    "slug": "sangar",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,7 +10,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.nexsis.app",
+      "package": "com.sangar.app",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",

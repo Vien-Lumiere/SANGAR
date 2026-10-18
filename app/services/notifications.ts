@@ -34,8 +34,8 @@ export const registerForPushNotificationsAsync = async (): Promise<string | null
 
     // Config channel for Android to support high priority and sound
     if (Platform.OS === 'android') {
-      await Notifications.setNotificationChannelAsync('nexsis-alerts', {
-        name: 'NEXSIS Earthquake Alerts',
+      await Notifications.setNotificationChannelAsync('sangar-alerts', {
+        name: 'SANGAR Earthquake Alerts',
         importance: Notifications.AndroidImportance.MAX,
         vibrationPattern: [0, 250, 250, 250],
         lightColor: '#FF6B35',

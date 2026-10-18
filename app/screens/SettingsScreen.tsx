@@ -56,7 +56,7 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({ onClose }) => {
     const mockData = {
       id: Date.now(),
       status: 'earthquake_detected',
-      sensor: 'Nexsis-TEST-MOCK',
+      sensor: 'SANGAR-TEST-MOCK',
       timestamp: new Date().toISOString(),
       receivedAt: new Date().toLocaleDateString('id-ID') + ' ' + new Date().toLocaleTimeString('id-ID'),
     };

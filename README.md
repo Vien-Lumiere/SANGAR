@@ -1,8 +1,8 @@
-# NEXSIS
+# SANGAR — Spatial Analysis Network for Geohazard Alert and Resilience
 
-NEXSIS/
+SANGAR/
 │
-├── NEXSIS.ino
+├── SANGAR.ino
 https://www.programiz.com/online-compiler/5oGBGV2J9EFSV
 ├── config.h 
 https://www.programiz.com/online-compiler/6puLuc6xeYeeR

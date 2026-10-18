@@ -26,7 +26,7 @@ export const StatusIndicator: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.topRow}>
-        <Text style={styles.title}>NEXSIS MONITORING PANEL</Text>
+        <Text style={styles.title}>SANGAR MONITORING PANEL</Text>
         <View style={[styles.badge, { borderColor: badgeColor }]}>
           <View style={[styles.dot, { backgroundColor: badgeColor }]} />
           <Text style={[styles.badgeText, { color: badgeColor }]}>{statusText}</Text>
